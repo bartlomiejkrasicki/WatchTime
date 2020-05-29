@@ -1,0 +1,16 @@
+﻿.login-form {
+    display: inline-block;
+}
+
+.login-form h4 {
+    text-align: left;
+}
+
+.body-content {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register-link {
+    margin-top: 15px;
+}

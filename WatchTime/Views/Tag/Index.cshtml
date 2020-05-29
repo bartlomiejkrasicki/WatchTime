@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WatchTime.Models.Tag>
+@{
+    ViewBag.Title = "Tags";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+<div class="tags-list">
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-active">
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model != null)
+                {
+                    foreach (var tag in Model)
+                    {
+                        <tr class="table-light">
+                            <th scope="row">@Html.ActionLink(tag.Category, "Details", "Tag", new { id = tag.Id }, new { @class = "nav-link" })</th>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>

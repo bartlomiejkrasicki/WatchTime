@@ -1,0 +1,43 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    @{ if (Session["email"] != null)
+        {
+            @Html.ActionLink("WatchTime", "Index", "Series", new { area = "" }, new { @class = "navbar-brand" })
+        }
+        else
+        {
+            @Html.ActionLink("WatchTime", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        }
+    }
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                @{ if (Session["email"] != null)
+                    {
+                        @Html.ActionLink("Home", "Index", "Series", null, new { @class = "nav-link" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                    }
+                }
+            </li>
+            @{
+                if (Session["email"] != null)
+                {
+                    <li class="nav-item">
+                        @Html.ActionLink("Series", "Index", "Series", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Producers", "Index", "Producer", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Tags", "Index", "Tag", null, new { @class = "nav-link" })
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</nav>

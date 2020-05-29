@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WatchTime.Models.Producer>
+@{
+    ViewBag.Title = "Producers list";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+<div class="producers-list">
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-active">
+                <th scope="col">Name</th>
+                <th scope="col">YearOfEstablishment</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var producer in Model)
+                {
+                    <tr class="table-light">
+                        <th scope="row">@Html.ActionLink(producer.Name, "Details", "Producer", new { id = producer.Id }, new { @class = "nav-link" })</th>
+                        <td>@producer.YearOfEstablishment</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

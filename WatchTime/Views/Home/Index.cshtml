@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="login-form">
+    <form action="/Home/Index" method="post">
+        <h4>Login</h4>
+        <fieldset>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" required>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <p class="register-link">or @Html.ActionLink("Create an account", "Index", "Register", null, null)</p>
+</div>

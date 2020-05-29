@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WatchTime.Models.Series>
+@{
+    ViewBag.SeriesList = "Most popular series by tag";
+}
+<h2>@ViewBag.SeriesList</h2>
+<br />
+<div class="series-list">
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-active">
+                <th scope="col">Series name</th>
+                <th scope="col">Seasons number</th>
+                <th scope="col">Year of production</th>
+                <th scope="col">Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model != null)
+                {
+                    foreach (var series in Model)
+                    {
+                        <tr class="table-light">
+                            <th scope="row">@series.Name</th>
+                            <td>@series.SeasonsNumber</td>
+                            <td>@series.YearOfProduction</td>
+                            <td>@series.Time</td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>

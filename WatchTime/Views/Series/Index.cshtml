@@ -1,0 +1,147 @@
+﻿@model WatchTime.ViewModels.SeriesViewModel
+@{
+    ViewBag.SuggestedSeries = "Recommended series";
+    ViewBag.SeriesList = "Series list";
+    ViewBag.ToWatch = "To watch list";
+    ViewBag.Watched = "Watched list";
+}
+
+<h2>@ViewBag.SuggestedSeries</h2>
+<br />
+<div class="suggested-series-list">
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-active">
+                <th scope="col">Series name</th>
+                <th scope="col">Seasons number</th>
+                <th scope="col">Year of production</th>
+                <th scope="col">Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var series in Model.Suggested)
+                {
+                    <tr class="table-light">
+                        <th scope="row">@series.Name</th>
+                        <td>@series.SeasonsNumber</td>
+                        <td>@series.YearOfProduction</td>
+                        <td>@series.Time</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<h2>@ViewBag.ToWatch</h2>
+<br />
+<div class="to-watch-list">
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-active">
+                <th scope="col">Series name</th>
+                <th scope="col">Seasons number</th>
+                <th scope="col">Year of production</th>
+                <th scope="col">Time</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var series in Model.ToWatch)
+                {
+                    <tr class="table-light">
+                        <th scope="row">@series.Name</th>
+                        <td>@series.SeasonsNumber</td>
+                        <td>@series.YearOfProduction</td>
+                        <td>@series.Time</td>
+                        <td>
+                            <form action="@Url.Action("UpdateToWatchSeries", "Series")" method="get">
+                                <input type="hidden" name="seriesId" value="@series.Id" />
+                                <button type="submit" name="createRelation" value="false"><i class="fa fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<h2>@ViewBag.Watched</h2>
+<br />
+<div class="watched-list">
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-active">
+                <th scope="col">Series name</th>
+                <th scope="col">Seasons number</th>
+                <th scope="col">Year of production</th>
+                <th scope="col">Time</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var series in Model.Watched)
+                {
+                    <tr class="table-light">
+                        <th scope="row">@series.Name</th>
+                        <td>@series.SeasonsNumber</td>
+                        <td>@series.YearOfProduction</td>
+                        <td>@series.Time</td>
+                        <td>
+                            <form action="@Url.Action("UpdateWatchedSeries", "Series")" method="get">
+                                <input type="hidden" name="seriesId" value="@series.Id" />
+                                <button type="submit" name="createRelation" value="false"><i class="fa fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<h2>@ViewBag.SeriesList</h2>
+<br />
+<div class="series-list">
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-active">
+                <th scope="col">Series name</th>
+                <th scope="col">Seasons number</th>
+                <th scope="col">Year of production</th>
+                <th scope="col">Time</th>
+                <th scope="col">To watch</th>
+                <th scope="col">Watched</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var series in Model.Series)
+                {
+                    <tr class="table-light">
+                        <th scope="row">@series.Name</th>
+                        <td>@series.SeasonsNumber</td>
+                        <td>@series.YearOfProduction</td>
+                        <td>@series.Time</td>
+                        <td>
+                            <form action="@Url.Action("UpdateToWatchSeries", "Series")" method="get">
+                                <input type="hidden" name="seriesId" value="@series.Id" />
+                                <button type="submit" name="createRelation" value="true"><i class="fa fa-star"></i></button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="@Url.Action("UpdateWatchedSeries", "Series")" method="get">
+                                <input type="hidden" name="seriesId" value="@series.Id" />
+                                <button type="submit" name="createRelation" value="true"><i class="fa fa-star"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
